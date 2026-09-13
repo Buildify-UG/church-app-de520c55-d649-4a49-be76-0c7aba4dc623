@@ -400,7 +400,9 @@ const Index = () => {
                   <div>
                     <h3 className="font-semibold text-foreground">WhatsApp Community</h3>
                     <p className="text-muted-foreground">Join our WhatsApp group for updates and prayer requests</p>
-                    <Button variant="outline" className="mt-2 text-green-600 border-green-300">Join WhatsApp</Button>
+                    <a href="https://chat.whatsapp.com/Ig82ZM4weg27Vp2N3nX460" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="mt-2 text-green-600 border-green-300 hover:bg-green-50">Join WhatsApp</Button>
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
