@@ -90,8 +90,8 @@ const Index = () => {
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">Rooted in Christ</h1>
-                <p className="text-xs text-muted-foreground">Ministry (RCM)</p>
+                <h1 className="text-2xl font-bold text-amber-500">Rooted in Christ Ministry </h1>
+                <p className="text-xl font-bold text-orange-800"> (RCM)</p>
               </div>
             </div>
             <button className="p-2 hover:bg-muted rounded-lg transition-colors">
