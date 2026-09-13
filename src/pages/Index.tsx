@@ -85,10 +85,13 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center">
                 <Heart className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-2xl font-bold text-foreground">Grace Church</h1>
+              <div>
+                <h1 className="text-2xl font-bold text-foreground">Rooted in Christ</h1>
+                <p className="text-xs text-muted-foreground">Ministry (RCM)</p>
+              </div>
             </div>
             <button className="p-2 hover:bg-muted rounded-lg transition-colors">
               <Bell className="w-5 h-5 text-foreground" />
@@ -107,7 +110,7 @@ const Index = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`py-4 px-2 font-medium text-sm transition-colors border-b-2 ${
                   activeTab === tab
-                    ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                    ? 'border-green-500 text-green-600 dark:text-green-400'
                     : 'border-transparent text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -124,14 +127,14 @@ const Index = () => {
         {activeTab === 'home' && (
           <div className="space-y-12">
             {/* Hero Section */}
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 p-12 text-white">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-green-600 to-emerald-700 p-12 text-white">
               <div className="relative z-10">
-                <h2 className="text-4xl font-bold mb-4">Welcome to Grace Church</h2>
-                <p className="text-lg text-blue-100 mb-8 max-w-2xl">
-                  Join our vibrant community of faith. We believe in serving God and loving one another with open hearts.
+                <h2 className="text-4xl font-bold mb-4">Welcome to Rooted in Christ Ministry</h2>
+                <p className="text-lg text-green-100 mb-8 max-w-2xl">
+                  Growing deeper in faith. We believe in serving God and loving one another with open hearts.
                 </p>
                 <div className="flex gap-4">
-                  <Button className="bg-white text-blue-600 hover:bg-blue-50">
+                  <Button className="bg-white text-green-600 hover:bg-green-50">
                     Join Us
                   </Button>
                   <Button variant="outline" className="border-white text-white hover:bg-white/10">
@@ -144,12 +147,12 @@ const Index = () => {
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 text-center">
-                <Users className="w-8 h-8 text-blue-500 mx-auto mb-3" />
+                <Users className="w-8 h-8 text-green-500 mx-auto mb-3" />
                 <h3 className="text-3xl font-bold text-foreground">1,250+</h3>
                 <p className="text-muted-foreground">Active Members</p>
               </Card>
               <Card className="p-6 text-center">
-                <Calendar className="w-8 h-8 text-indigo-500 mx-auto mb-3" />
+                <Calendar className="w-8 h-8 text-emerald-500 mx-auto mb-3" />
                 <h3 className="text-3xl font-bold text-foreground">25+</h3>
                 <p className="text-muted-foreground">Events Monthly</p>
               </Card>
@@ -189,7 +192,7 @@ const Index = () => {
               {events.map((event) => (
                 <Card key={event.id} className="p-6 hover:shadow-lg transition-shadow">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
                       {event.icon}
                     </div>
                     <div className="flex-1">
@@ -223,7 +226,7 @@ const Index = () => {
         {activeTab === 'about' && (
           <div className="space-y-8">
             <Card className="p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-4">About Grace Church</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-4">About Rooted in Christ Ministry</h2>
               <p className="text-foreground/80 mb-4">
                 Grace Church has been serving our community for over 30 years. We are dedicated to spreading God's love, fostering spiritual growth, and making a positive impact in the lives of those around us.
               </p>
@@ -248,24 +251,24 @@ const Index = () => {
               <h2 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                  <MapPin className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground">Address</h3>
                     <p className="text-muted-foreground">123 Faith Street, Community City, ST 12345</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                  <Phone className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
                     <p className="text-muted-foreground">(555) 123-4567</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                  <Mail className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-muted-foreground">hello@gracechurch.com</p>
+                    <p className="text-muted-foreground">hello@rootedinchrist.com</p>
                   </div>
                 </div>
               </div>
@@ -278,7 +281,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-slate-900 dark:bg-slate-950 text-white mt-16 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-slate-400">© 2024 Grace Church. All rights reserved.</p>
+          <p className="text-sm text-slate-400">© 2024 Rooted in Christ Ministry (RCM). All rights reserved.</p>
         </div>
       </footer>
     </div>
