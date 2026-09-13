@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Users, Heart, Clock, Phone, Mail, ChevronRight, Bell } from 'lucide-react';
+import { Calendar, MapPin, Users, Heart, Clock, Phone, Mail, ChevronRight, Bell, MessageCircle, BookOpen, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Event {
   id: string;
@@ -20,66 +21,66 @@ interface Announcement {
 }
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<'home' | 'events' | 'about' | 'contact'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'events' | 'about' | 'leadership' | 'contact'>('home');
 
   const events: Event[] = [
     {
       id: '1',
-      title: 'Sunday Service',
-      date: 'Every Sunday',
-      time: '10:00 AM - 11:30 AM',
-      location: 'Main Sanctuary',
+      title: 'Online Fellowship & Teaching',
+      date: 'Every Wednesday',
+      time: '9:00 PM - 10:00 PM',
+      location: 'Google Meet',
       icon: <Users className="w-5 h-5" />
     },
     {
       id: '2',
-      title: 'Youth Group',
-      date: 'Wednesdays',
-      time: '6:00 PM - 7:30 PM',
-      location: 'Fellowship Hall',
+      title: 'Prayer & Fasting',
+      date: 'Every Wednesday',
+      time: 'All Day',
+      location: 'Online & In-Person',
       icon: <Heart className="w-5 h-5" />
     },
     {
       id: '3',
-      title: 'Bible Study',
-      date: 'Thursdays',
-      time: '7:00 PM - 8:30 PM',
-      location: 'Library',
-      icon: <Calendar className="w-5 h-5" />
+      title: 'Leadership Meetings',
+      date: 'Monthly',
+      time: 'TBD',
+      location: 'Google Meet',
+      icon: <Users className="w-5 h-5" />
     },
     {
       id: '4',
-      title: 'Prayer Meeting',
-      date: 'Saturdays',
-      time: '9:00 AM - 10:00 AM',
-      location: 'Prayer Room',
-      icon: <Heart className="w-5 h-5" />
+      title: 'Mission & Outreach',
+      date: 'Ongoing',
+      time: 'Various',
+      location: 'Across Kenya',
+      icon: <Zap className="w-5 h-5" />
     }
   ];
 
   const announcements: Announcement[] = [
     {
       id: '1',
-      title: 'New Community Outreach Program',
-      date: 'March 15, 2024',
-      preview: 'Join us as we launch our new community service initiative to help local families in need.'
+      title: 'Join Our WhatsApp Community',
+      date: 'Latest',
+      preview: 'Connect with our prayer chain, get updates, and stay engaged with the RCM family.'
     },
     {
       id: '2',
-      title: 'Easter Celebration Planning',
-      date: 'March 10, 2024',
-      preview: 'We are organizing special events for Easter. Volunteers needed for setup and coordination.'
+      title: 'Wednesday Online Fellowship',
+      date: 'Weekly',
+      preview: 'Join us every Wednesday 9pm-10pm via Google Meet for teaching, fellowship, and prayer.'
     },
     {
       id: '3',
-      title: 'Welcome New Members!',
-      date: 'March 5, 2024',
-      preview: 'Please join us in welcoming our newest church members to our community.'
+      title: 'Prayer & Fasting Initiative',
+      date: 'Every Wednesday',
+      preview: 'Dedicate Wednesdays to prayer and fasting for spiritual growth and ministry breakthrough.'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-emerald-950">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -104,7 +105,7 @@ const Index = () => {
       <nav className="bg-white dark:bg-slate-900 border-b border-border sticky top-16 z-40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-8">
-            {(['home', 'events', 'about', 'contact'] as const).map((tab) => (
+            {(['home', 'events', 'about', 'leadership', 'contact'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -160,6 +161,25 @@ const Index = () => {
                 <Heart className="w-8 h-8 text-red-500 mx-auto mb-3" />
                 <h3 className="text-3xl font-bold text-foreground">100%</h3>
                 <p className="text-muted-foreground">Community Focused</p>
+              </Card>
+            </div>
+
+            {/* Prayer Requests */}
+            <div>
+              <h2 className="text-2xl font-bold text-foreground mb-6">Prayer Requests</h2>
+              <Card className="p-6 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-950/20 dark:to-pink-950/20 border-red-200 dark:border-red-800">
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <Heart className="w-6 h-6 text-red-500 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Share Your Prayer Needs</h3>
+                      <p className="text-foreground/80 mb-4">
+                        Our prayer coordinator and prayer chain are ready to intercede for you. Share your requests via WhatsApp or contact us.
+                      </p>
+                      <Button className="bg-red-500 hover:bg-red-600 text-white">Submit Prayer Request</Button>
+                    </div>
+                  </div>
+                </div>
               </Card>
             </div>
 
@@ -226,21 +246,146 @@ const Index = () => {
         {activeTab === 'about' && (
           <div className="space-y-8">
             <Card className="p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-4">About Rooted in Christ Ministry</h2>
-              <p className="text-foreground/80 mb-4">
-                Grace Church has been serving our community for over 30 years. We are dedicated to spreading God's love, fostering spiritual growth, and making a positive impact in the lives of those around us.
-              </p>
-              <p className="text-foreground/80 mb-4">
-                Our mission is to create a welcoming, inclusive community where everyone can grow in their faith and find support on their spiritual journey.
-              </p>
-              <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Our Values</h3>
-              <ul className="space-y-2 text-foreground/80">
-                <li>✓ Faith and Spirituality</li>
-                <li>✓ Community Service</li>
-                <li>✓ Love and Compassion</li>
-                <li>✓ Inclusivity and Acceptance</li>
-              </ul>
+              <h2 className="text-2xl font-bold text-foreground mb-6">About Rooted in Christ Ministry</h2>
+              
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-green-600 mb-3">Our Vision</h3>
+                  <p className="text-foreground/80">
+                    A ministry rooted in Christ, reaching across Kenya with the Gospel, and connecting the global body of believers through digital fellowship for shared growth and impact.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-green-600 mb-3">Our Mission</h3>
+                  <p className="text-foreground/80">
+                    We glorify God by building a virtual house of fellowship and biblical teaching to root believers in faith, and by launching physical outreach missions across Kenya to share the love and Gospel of Jesus Christ.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-green-600 mb-3">Founded</h3>
+                  <p className="text-foreground/80">
+                    9th July 2024 — Kenya
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-4">Statement of Faith</h3>
+                  <ul className="space-y-3 text-foreground/80">
+                    <li className="flex gap-3">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>One God, eternally existing in three persons: Father, Son, and Holy Spirit</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>Salvation by grace through faith in Jesus Christ alone</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>The present ministry of the Holy Spirit, by whose indwelling the believer is enabled to live a godly life</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>The unity of all true believers in the Body of Christ</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>Sound doctrine rooted in what Jesus taught, confirmed by the early apostles and Paul</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </Card>
+          </div>
+        )}
+
+        {/* Leadership Tab */}
+        {activeTab === 'leadership' && (
+          <div className="space-y-8">
+            <Card className="p-8 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
+              <h2 className="text-2xl font-bold text-foreground mb-4">Leadership Team</h2>
+              <p className="text-foreground/80 mb-8">
+                Our leadership consists of five offices working together under the headship of Christ to guide RCM.
+              </p>
+            </Card>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="p-6 hover:shadow-lg transition-shadow">
+                <div className="flex gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
+                    <Heart className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">Chairperson</h3>
+                    <p className="text-sm text-muted-foreground">Spiritual Leadership</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm">
+                  Provides spiritual vision and direction, presides over meetings, ensures alignment with the Statement of Faith, and serves as the primary spiritual guide for the leadership team.
+                </p>
+              </Card>
+
+              <Card className="p-6 hover:shadow-lg transition-shadow">
+                <div className="flex gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">Missions Coordinator</h3>
+                    <p className="text-sm text-muted-foreground">Outreach & Partnerships</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm">
+                  Identifies mission opportunities, builds partnerships with other organizations, organizes logistics for projects, and leads prayer initiatives for global outreach.
+                </p>
+              </Card>
+
+              <Card className="p-6 hover:shadow-lg transition-shadow">
+                <div className="flex gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
+                    <BookOpen className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">Secretary</h3>
+                    <p className="text-sm text-muted-foreground">Records & Communication</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm">
+                  Maintains meeting minutes, distributes announcements, manages the ministry calendar, maintains membership directory, and organizes meeting logistics.
+                </p>
+              </Card>
+
+              <Card className="p-6 hover:shadow-lg transition-shadow">
+                <div className="flex gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
+                    <Zap className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">Treasurer</h3>
+                    <p className="text-sm text-muted-foreground">Financial Management</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm">
+                  Manages bank accounts, tracks income and expenses, prepares budgets, oversees donation platforms, and provides regular financial reports.
+                </p>
+              </Card>
+
+              <Card className="p-6 hover:shadow-lg transition-shadow md:col-span-2">
+                <div className="flex gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-400">
+                    <Heart className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground">Prayer Coordinator</h3>
+                    <p className="text-sm text-muted-foreground">Intercession & Spiritual Covering</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm">
+                  Organizes prayer meetings, manages prayer chains, creates prayer guides, mobilizes intercessors, records answered prayers, and coordinates fasting initiatives.
+                </p>
+              </Card>
+            </div>
           </div>
         )}
 
@@ -251,17 +396,18 @@ const Index = () => {
               <h2 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+                  <MessageCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground">Address</h3>
-                    <p className="text-muted-foreground">123 Faith Street, Community City, ST 12345</p>
+                    <h3 className="font-semibold text-foreground">WhatsApp Community</h3>
+                    <p className="text-muted-foreground">Join our WhatsApp group for updates and prayer requests</p>
+                    <Button variant="outline" className="mt-2 text-green-600 border-green-300">Join WhatsApp</Button>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground">Phone</h3>
-                    <p className="text-muted-foreground">(555) 123-4567</p>
+                    <p className="text-muted-foreground">+254 799 464 599</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
